@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>post</title>
+</head>
+<!--发一个get请求，1.创建一个ajax对象，2.创建一个回调(打印状态) 3.打开链接 4.指定响应的类型 
+5.指定响应头(name,age) 6.设置监听响应回来之后的结果(1.读取状态 2.状态码 3.状态短语 4.获取所有响应头
+5.响应体)-->
+<body>
+    <script>
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            console.log('onreadystatechang', xhr.readyState);
+        }
+        xhr.open('POST','http://127.0.0.1:8080/post');
+        xhr.responType = 'text';
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function(){
+            console.log('readyState', xhr.readyState);
+            console.log('status', xhr.status);
+            console.log('statusText', xhr.statusText);
+            console.log('getAllResponseHeaders', xhr.getAllResponseHeaders());
+            console.log('response', xhr.response);
+        }
+        xhr.send(JSON.stringify({name: 'Jin', age: 29}));
+        // xhr.send('{"name":"Jin","age":11}');
+    </script>
+</body>
+</html>

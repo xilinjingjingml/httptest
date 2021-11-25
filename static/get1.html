@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <mate charset="UTF-8">
+        <mate name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>get</title>
+    </head>
+    <body>
+        <script>
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                console.log('onreadystatechange',xhr.readyState);
+            }
+            xhr.open('GET','http://127.0.0.1/get');
+            xhr.responType = 'text';
+            xhr.setReqestHeader('name','Jin');
+            xhr.setReqestHeader('age','29');
+            xhr.onload = function(){
+                console.log('readyState', xhr.readyState);
+                console.log('status',xhr.status);
+                console.log('statusTest',xhr.statusText);
+                console.log('getAllResponseHeaders',xhr.getAllResponseHeader());
+                console.log('response',response);
+            };
+            xhr.send();
+        </script>
+    </body>
+</html>
